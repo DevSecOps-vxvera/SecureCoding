@@ -1,0 +1,22 @@
+***Acceso Ambiente***
+https://482343539329.signin.aws.amazon.com/console
+User[A-J] Test1234$
+
+**Preparacion del Proyecto
+git clone https://github.com/veracode/verademo-java-web
+sudo apt-get update
+sudo apt-get -y install maven
+cd verademo
+mvn clean install 
+ls target
+docker pull veracode/api-wrapper-java
+
+alias 'veracode-api'='docker run -it --rm -v $PWD:/home/luser -v ~/.veracode/credentials:/home/luser/.veracode/credentials veracode/api-wrapper-java:cmd'
+
+veracode-api -help
+
+
+*** Ejecucion de Analisis ***
+veracode-api -action UploadAndScan -createprofile true -appname AWSVeraJava[VxV] -version 1.0 -filepath verademo.war -vid []  -vkey [] 
+
+
