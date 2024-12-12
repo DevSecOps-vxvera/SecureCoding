@@ -6,7 +6,7 @@ User[A-J] Test1234$
 git clone https://github.com/veracode/verademo-java-web
 sudo apt-get update
 sudo apt-get -y install maven
-cd verademo
+cd verademo-java-web
 mvn clean install 
 ls target
 docker pull veracode/api-wrapper-java
