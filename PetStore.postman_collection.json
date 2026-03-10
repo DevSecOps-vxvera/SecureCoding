@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "55b6629c-b175-417d-9e27-19b27a25bcda",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "46574393"
+	},
+	"item": [
+		{
+			"name": "Pet Store",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
