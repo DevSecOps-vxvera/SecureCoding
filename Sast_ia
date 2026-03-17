@@ -1,0 +1,81 @@
+mkdir -p ~/taller-gemini-sast
+cd ~/taller-gemini-sast
+git clone https://github.com/TheHackerDev/damn-vulnerable-golang.git
+cd damn-vulnerable-golang
+npx https://github.com/google-gemini/gemini-cli
+
+#Login with Google
+
+/model
+
+#Prompt 1 - Primer uso: comprensión general del código
+Analiza este repositorio de forma estática.
+
+Explícame:
+1. qué tipo de aplicación es,
+2. qué archivos parecen más importantes,
+3. qué riesgos de seguridad generales observas,
+4. qué partes revisarías primero en una práctica de desarrollo seguro.
+
+No hagas cambios.
+No ejecutes nada.
+Si no estás seguro, dilo claramente.
+
+
+
+#Prompt 2 - Segundo uso: revisión inicial orientada a seguridad
+Actúa como revisor de desarrollo seguro.
+
+Quiero una revisión inicial del repositorio con enfoque defensivo.
+Indica:
+1. funciones o bloques sospechosos,
+2. posibles vulnerabilidades por categoría,
+3. archivos prioritarios para revisar manualmente,
+4. qué evidencia visible te hace sospechar de cada hallazgo.
+
+No inventes hallazgos.
+No propongas explotación.
+No hagas cambios todavía.
+
+
+
+#Prompt 3 - prompt básico de SAST
+Actúa como analista de desarrollo seguro y realiza un análisis SAST básico, conservador y explicable de este repositorio.
+
+Objetivo:
+Identificar vulnerabilidades probables sin ejecutar el código.
+
+Instrucciones:
+- Revisa el código fuente y detecta patrones inseguros.
+- Prioriza injection, validación insuficiente de entradas, uso peligroso de comandos del sistema, exposición de datos, criptografía débil, path traversal y errores de control de acceso.
+- Para cada hallazgo devuelve:
+  1. ID del hallazgo
+  2. archivo y línea o bloque aproximado
+  3. categoría
+  4. severidad sugerida: baja, media, alta o crítica
+  5. explicación técnica
+  6. impacto para negocio en una frase
+  7. recomendación de remediación
+- Si no hay evidencia suficiente, marca “requiere validación manual”.
+- No inventes vulnerabilidades.
+- No ejecutes nada.
+- No propongas explotación.
+
+
+#Prompt 4 - pedir remediación asistida
+Propón una remediación mínima para los hallazgos de [Tipo].
+
+Requisitos:
+- conservar funcionalidad,
+- validar entradas,
+- evitar funciones peligrosas,
+- aplicar mínimo privilegio,
+- explicar primero qué archivos tocarías,
+- no modificar archivos no relacionados,
+- mostrar el cambio de forma clara para revisión manual.
+
+
+/quit
+git clone https://github.com/veracode/verademo-java-web
+cd verademo-java-web/
+
